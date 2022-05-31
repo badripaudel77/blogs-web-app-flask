@@ -14,5 +14,9 @@
 ### To install Flask inside virtual environment 
 - To install Flask inside virtual environment enter the command: ```sudo pip3 install flask``` or ```pip3 install flask``` on project directory not venv dir
 - to verify flask installation we can use following command, it will give the installed version of the flask [2.1.2] as of writing this file
-     >>> import flask
-     >>> flask.__version__
+     - >>> import flask
+     - >>> flask.__version__
+
+### Define route 
+- to define route in flask , we can use ```app.add_url_rule('/', 'index', index)``` where index is the name of the method or 
+  use ```route``` decorator as ```@app.route('/')```     
