@@ -19,4 +19,21 @@
 
 ### Define route 
 - to define route in flask , we can use ```app.add_url_rule('/', 'index', index)``` where index is the name of the method or 
-  use ```route``` decorator as ```@app.route('/')```     
+  use ```route``` decorator as ```@app.route('/')``` 
+
+### Can have html files in template folder [templates is default] 
+- Can render html page when request [/, / some patters ] using ```render_template``` method as render_template('file_name_in_templates foler', data if any) 
+for eg : ``` return render_template('home.html', title='My Blogs - Powered with flask !')```
+
+- To pass many arguments data to the view , use as 
+   ```home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text = "HOME", 'BLOGS', 'ADMIN LOGIN', 'SEARCH'
+     template_context = dict({home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text })
+     return render_template('home.html', **template_context)
+   ``` 
+- To include template from one file or directory in another we can use , ``` include ``` statement in flask as 
+``` {% include 'path/to/template' %} ```   
+
+### serving static files
+- static files like .css , .js files are included in 'flask_app/static' directory  by default , if different, have to configure.
+- to use that files, use ```    <link rel="stylesheet" href="{{ url_for('static', filename='nav_styles.css') }}">```
+

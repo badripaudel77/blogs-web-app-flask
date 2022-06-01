@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__) 
 # name = __main__, app = <Flask 'main'>
@@ -6,11 +6,14 @@ app = Flask(__name__)
 
 """
  Renders home page with navbar & Image
+ renders home.html [from templates dir]
  @get request
 """
 @app.route('/')
 def index():
-    return "Home Page"
+     title,home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text = "My Blogs - Powered with flask !", "Home", 'Blogs', 'Admin Login', 'Search'
+     template_context = dict(title = title, home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text)
+     return render_template('home.html', **template_context)
 
 """
 Lists of all blogs in the database
@@ -45,6 +48,14 @@ should redirect to /
 @app.route('/logout')
 def logout():
     return "Logout Page" # have to redirect after killing session or something like that.   
+
+"""
+When no matching url is hit, show this.
+@get requests
+"""
+@app.route('/error')
+def http_404_handler():
+    return "<h2>404 Error</h2>"
 
 # app.add_url_rule('/','index', index) # other way to route request
 # run the app
