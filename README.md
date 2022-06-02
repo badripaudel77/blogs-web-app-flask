@@ -31,7 +31,7 @@ for eg : ``` return render_template('home.html', title='My Blogs - Powered with 
      return render_template('home.html', **template_context)
    ``` 
    or create dictionary and pass
-   ```data = {
+    ```data = {
         'title' : 'My blogs in flask',
         'home_nav_text' : 'Home'
          # more field
