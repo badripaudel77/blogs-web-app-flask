@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, request
 import flask
 
 app = Flask(__name__) 
@@ -19,8 +19,8 @@ def index():
     # }
     # return render_template('home.html', **data)
 
-     title,home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text = "My Blogs - Powered with flask !", "Home", 'Blogs', 'Admin Login', 'Search'
-     template_context = dict(title = title, home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text)
+     title,home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text,brand_nav_text = "My Blogs - Powered with flask !", "Home", 'Blogs', 'Admin Login', 'Search','Amigos Blogs'
+     template_context = dict(title = title, home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text,brand_nav_text = brand_nav_text)
      return render_template('home.html', **template_context)
    
 
@@ -31,7 +31,9 @@ Accessible to all the users
 """
 @app.route('/blogs')
 def get_notes():
-    return "All of your blogs"
+     title,home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text,brand_nav_text, all_amigos_blogs_text = "My Blogs - Powered with flask !", "Home", 'Blogs', 'Admin Login', 'Search','Amigos Blogs','All Amigos Blogs'
+     template_context = dict(title = title, home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text,brand_nav_text = brand_nav_text, all_amigos_blogs_text = all_amigos_blogs_text)
+     return render_template('blogs/blogs.html', **template_context)
 
 """
 Retrieve specific blog from the d
@@ -46,19 +48,26 @@ def get_note_by_id(blog_id):
  Login page for admin
  @get request
 """
-@app.route('/login-page')
+@app.route('/login-page',methods=['get'])
 def get_login_page():
-    return "Login Page"
+    return render_template("admin_login/login.html", title = "Admin Login")
 
 """
 Actual login form submission
 Post request
 """
-@app.route('/login')  
+@app.route('/login', methods=['post'])  
 def login() :
     # res_body = make_response('res_body', status_code=200)
     # res_body.headers['Content-Type'] = 'text/plain'
     # res_body.headers['Server'] = 'Foobar'
+    # get input values & validate to the database
+    # render message
+    username = request.form.get('email')
+    password = request.form.get('password')
+    remember_me = request.form.get('remember')
+    print("Validating user {}".format(username))
+
     return "Logging you in ..."  
 
 """
