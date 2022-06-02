@@ -30,10 +30,44 @@ for eg : ``` return render_template('home.html', title='My Blogs - Powered with 
      template_context = dict({home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text })
      return render_template('home.html', **template_context)
    ``` 
+   or create dictionary and pass
+   ```  data = {
+        'title' : 'My blogs in flask',
+        'home_nav_text' : 'Home'
+         # more field
+      }
+      return render_template('home.html', **data)
+    ```
+### Creating response
+- Even though flask autmatically creates reposne using ```make_response()``` , but often we need to include more options like header , content-type etc, 
+- syntax of make_response is 
+```res_obj = make_response(res_body, status_code=200) ```
+- to set additional type , we can use ``` res_obj``` as 
+  ``` res.headers['Content-Type'] = 'text/plain' ```
+  ``` res.headers['Server'] = 'Foobar ' ```  
+
+### Redirect the reponse
+- to redirect the response, we can use ```return redirect("url_to_redirect", code=301)```  
 - To include template from one file or directory in another we can use , ``` include ``` statement in flask as 
 ``` {% include 'path/to/template' %} ```   
 
+### Intercepting requests
+- Just like grails [& other langaguages too] has interceptor, python also some decorators like ``` before_first_request, after_request etc ``` can be used as 
+```
+@app.before_request
+def before_request():
+    print("before_request() called")
+```
+### Aborting requests 
+``` @app.route('/')
+    def abort_this_request():
+          abort(404)
+```
 ### serving static files
 - static files like .css , .js files are included in 'flask_app/static' directory  by default , if different, have to configure.
 - to use that files, use ```    <link rel="stylesheet" href="{{ url_for('static', filename='nav_styles.css') }}">```
+
+### custom error handler
+- have ```errorhandler``` decorator to show custom pages
+- can be used as ```@app.errorhandler(404)``` where 404 is the code passed to indicate not found
 
