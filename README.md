@@ -31,7 +31,7 @@ for eg : ``` return render_template('home.html', title='My Blogs - Powered with 
      return render_template('home.html', **template_context)
    ``` 
    or create dictionary and pass
-   ```  data = {
+   ```data = {
         'title' : 'My blogs in flask',
         'home_nav_text' : 'Home'
          # more field
@@ -71,3 +71,9 @@ def before_request():
 - have ```errorhandler``` decorator to show custom pages
 - can be used as ```@app.errorhandler(404)``` where 404 is the code passed to indicate not found
 
+### handling forms
+- we can get form data in flask just like in other techs
+- get form data  : ```username = request.form.get('email')``` have to import request from the flask 
+
+- Another good ways to handle form is using WTForm as it has a lot of features with csrf protection, captacha and more..
+- to install wtforms, use : ```pip3 install flask-wtf ```

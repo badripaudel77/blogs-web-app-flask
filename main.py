@@ -63,12 +63,16 @@ def login() :
     # res_body.headers['Server'] = 'Foobar'
     # get input values & validate to the database
     # render message
-    username = request.form.get('email')
-    password = request.form.get('password')
-    remember_me = request.form.get('remember')
-    print("Validating user {}".format(username))
-
-    return "Logging you in ..."  
+    # username = request.form.get('email')
+    # password = request.form.get('password')
+    # remember_me = request.form.get('remember')
+    # print("Validating user {}".format(username))
+    
+    error_message = "Invalid Credentials, Please try again!"
+    # db logic goes here 
+    # if not succeeded
+    return render_template("admin_login/login.html", error_message = error_message)
+    # if succeeded take to admin dashboard
 
 """
 get request to logout for admin
