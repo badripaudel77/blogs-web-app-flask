@@ -22,20 +22,13 @@
               <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
             </div>
             <!-- The slideshow/carousel -->
+            <!--  carousel logic can be changed. .... -->
             <div class="carousel-inner" style="height: 300px;">
               <div class="carousel-item active">
                 <img src="/static/images/home_image.png" alt="Los Angeles" class="d-block" style="width:100%;">
-                <div class="carousel-caption">
-                  <h3>Los Angeles</h3>
-                  <p>We had such a great time in LA!</p>
-                </div>
               </div>
               <div class="carousel-item">
                 <img src="/static/images/home_image.png" alt="Chicago" class="d-block" style="width:100%">
-                <div class="carousel-caption">
-                  <h3>Chicago</h3>
-                  <p>Thank you, Chicago!</p>
-                </div> 
               </div>
             </div>
             
@@ -51,74 +44,20 @@
         <!-- display all the posts -->
          <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
           <!-- loop through & .... -->
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
+          {% for key, blogs_list in blogs.items() %}
+          {% for blog in blogs_list %}
+          <div class="card" style="width: 15rem; margin: 10px;">
+            <img class="card-img-top" src="{{blog[3]}}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
+              <span>By : {{blog[5]}} - {{blog[4]}}</span> <hr>
+              <h5 class="card-title">{{blog[1]}}</h5>
+              <p class="card-text" style="max-height: 100px; overflow: hidden;">{{blog[2]}}.</p>
+              <a href="/blogs/{{blog[0]}}" class="btn btn-primary">Go to Details</a>
             </div>
           </div>
-
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin: 30px;">
-            <img class="card-img-top" src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go to Details</a>
-            </div>
-          </div>
-          
+          {% endfor %}
+          {% endfor %}
          </div>
-
     </div>
 </body>
 </html>

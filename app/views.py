@@ -1,6 +1,7 @@
 #  contains all the routes 
 #  define as blue print i.e tell that it contains bunch of routes
 
+from lib2to3.pytree import Node
 from flask import render_template, Blueprint, session,redirect, url_for
 from app.db_config import get_connection
 
@@ -30,7 +31,9 @@ Accessible to all the users
 def get_blogs():
      title,home_nav_text, blogs_nav_text, admin_login_nav_text, search_nav_text,brand_nav_text, all_amigos_blogs_text = "My Blogs - Powered with flask !", "Home", 'Blogs', 'Admin Login', 'Search','Amigos Blogs','All Amigos Blogs'
      template_context = dict(title = title, home_nav_text = home_nav_text, blogs_nav_text = blogs_nav_text,admin_login_nav_text=admin_login_nav_text,search_nav_text=search_nav_text,brand_nav_text = brand_nav_text, all_amigos_blogs_text = all_amigos_blogs_text)
-     blogs = []
+     blogs = None
+     blogs_dict = None
+
      connection,cursor  = get_connection() 
 
      try:
@@ -38,13 +41,18 @@ def get_blogs():
           cursor.execute(fetch_blogs_query)
           # store the data 
           blogs = cursor.fetchall()
+          blogs_dict = {
+               'blogs' : blogs
+          }
+          template_context['blogs'] = blogs_dict
      except(ConnectionError) as connection_error:
         print("Something went wrong while fetching blogs from the database : ", connection_error )
      
      finally:
         cursor.close()
-        connection.close()     
-     return render_template('blogs/blogs.html',  **template_context)
+        connection.close()   
+        print(template_context , ' template')          
+     return render_template('blogs/blogs.html', **template_context)
      
 
 """
@@ -54,4 +62,7 @@ Accessible for all users
 """
 @views.route('/blogs/<int:blog_id>')   
 def get_blog_by_id(blog_id):
-    return "Blog with ID : {}".format(blog_id)       
+     # grab the ID of blog
+     # query against db
+     # display the single blog
+    return "Blog with ID : {}".format(blog_id )
