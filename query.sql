@@ -13,7 +13,8 @@ CREATE DATABASE flask_blogs;
  CREATE TABLE blogs (
        id serial PRIMARY KEY,
        title VARCHAR ( 200 ) NOT NULL,
-       content TEXT NOT NULL,  
+       content TEXT NOT NULL, 
+       img_url VARCHAR ( 200 ) NOT NULL, 
        created_on TIMESTAMP, 
        creator VARCHAR ( 150 ) NOT NULL 
        );           

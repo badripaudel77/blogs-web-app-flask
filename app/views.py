@@ -44,7 +44,7 @@ def get_blogs():
      finally:
         cursor.close()
         connection.close()     
-     return render_template('blogs/blogs.html', blogs, **template_context)
+     return render_template('blogs/blogs.html',  **template_context)
      
 
 """

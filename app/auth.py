@@ -71,16 +71,16 @@ def add_blogs():
     # if post request, validates & adds to the database    
     creator = session['username'] 
     form_data = request.form
-    blog_tilte, blog_content, blog_created_date, blog_created_by = form_data.get('title'), form_data.get('content'), datetime.datetime.now(), creator
+    blog_tilte, blog_content, img_url, blog_created_date, blog_created_by = form_data.get('title'), form_data.get('content'), form_data.get('img_url'), datetime.datetime.now(), creator
     if(len(blog_tilte) <10 or len(blog_content) < 20):
         return render_template("admin_login/add_blog.html", error_message = 'Please give proper title & description.') 
 
     connection, cursor = get_connection()
 
-    insert_into_blogs_query = 'INSERT INTO blogs(title, content, created_on, creator) values(%s, %s, %s, %s)'
+    insert_into_blogs_query = 'INSERT INTO blogs(title, content, img_url, created_on, creator) values(%s, %s, %s, %s, %s)'
 
     try:
-        cursor.execute(insert_into_blogs_query, ( blog_tilte, blog_content, blog_created_date, blog_created_by))
+        cursor.execute(insert_into_blogs_query, ( blog_tilte, blog_content, img_url, blog_created_date, blog_created_by))
         connection.commit()    
 
     except(ConnectionError) as connection_error:
