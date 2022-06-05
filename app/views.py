@@ -1,8 +1,8 @@
 #  contains all the routes 
 #  define as blue print i.e tell that it contains bunch of routes
 
-from lib2to3.pytree import Node
 from flask import render_template, Blueprint, session,redirect, url_for
+import flask
 from app.db_config import get_connection
 
 views = Blueprint('views', __name__)  # define blue print, name = views , we can call it routes as well.
@@ -66,3 +66,15 @@ def get_blog_by_id(blog_id):
      # query against db
      # display the single blog
     return "Blog with ID : {}".format(blog_id )
+
+
+@views.route("/about")
+def about_app():
+    about = {
+        'app_name' : 'Amigos Blogs',
+        'app_version' : '1.0.0',
+        'flask_version' : flask.__version__,
+        'app_developer' : 'Badri Paudel',
+        'developer_github_link' : 'https://github.com/badripaudel77/flask-web-blogs'
+    }
+    return about
