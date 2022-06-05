@@ -2,6 +2,8 @@
 
 #### Reference : https://overiq.com/flask-101/
 
+#### Live project link : https://blogsinflask.herokuapp.com/
+
 ### What is flask ? 
  - Flask is a micro framework for Python, meaning it's small and doesn't have large no. of built in modules like in other frameworks like Django or Grails. Flask is also less rigid about how you should structure your application.Unlike framework like Django, where you have to follow the strict rules. In Flask, you are free to structure your application the way you want.
 

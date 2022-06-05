@@ -13,22 +13,22 @@ import psycopg2
 def db_connect():
     connection = None
     try:
-        # local credentials 
-        # connection = psycopg2.connect(
-        #                     database ="flask_blogs", 
-        #                     user = "postgres", 
-        #                     password = "_BadriPostgres1@", 
-        #                     host = "localhost", 
-        #                     port = "5432")
-        
-        # heroku credentials for db TODO : to be chagned later
+        #local credentials 
         connection = psycopg2.connect(
-                            database ="d1m948okhhenit", 
-                            user = "kiihkduqkdlmdq", 
-                            password = "5f9f20ad260584102b104e92cdccb018b27883fc0475e9d2a2dcf94617a36087", 
-                            host = "ec2-54-165-178-178.compute-1.amazonaws.com", 
-                            port = "5432")                    
-        print("connected to the DB : ", connection)                    
+                            database ="flask_blogs", 
+                            user = "postgres", 
+                            password = "_BadriPostgres1@", 
+                            host = "localhost", 
+                            port = "5432")
+        
+        # heroku credentials for db TODO : to be chagned later, try to create own credentials, this will not work as heroku changes frequently.
+        # connection = psycopg2.connect(
+        #                     database ="d1m948okhhenit", 
+        #                     user = "kiihkduqkdlmdq", 
+        #                     password = "5f9f20ad260584102b104e92cdccb018b27883fc0475e9d2a2dcf94617a36087", 
+        #                     host = "ec2-54-165-178-178.compute-1.amazonaws.com", 
+        #                     port = "5432")                    
+        # print("connected to the DB : ", connection)                    
 
     except(Exception) as error:
         print("Something went wrong while connecting to PG DB server : ", error)
