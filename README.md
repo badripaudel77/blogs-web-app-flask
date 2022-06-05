@@ -110,3 +110,4 @@ def before_request():
 - git init & commit 
 - create heroku app from CLI as ``` heroku create blogsinflask ``` , blogsinflask is app name
 - ```git remote -v``` gives remote repository 
+- push to heroku ```git push heroku main```
