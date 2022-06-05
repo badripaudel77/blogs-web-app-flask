@@ -6,7 +6,11 @@ CREATE DATABASE flask_blogs;
        id serial PRIMARY KEY,
        username  VARCHAR ( 200 ) NOT NULL,
        password VARCHAR ( 150 ) NOT NULL 
-       );   
+       );
+
+-- insert one admin user so that can login first time & add blogs: 
+INSERT INTO users(username, password) values('username@username.com', 'password')          
+-- when logging in first time, use this or create your own in database.
 
  -- create table blogs
 

@@ -15,15 +15,16 @@
 - To install Flask inside virtual environment enter the command: ```sudo pip3 install flask``` or ```pip3 install flask``` on project directory not venv dir or `pip install flask==version_number` if specific version.
 - to unistall if needed, use ```python3 -m pip uninstall flask ```  
 - to verify flask installation we can use following command, it will give the installed version of the flask [2.1.2] as of writing this file
-     - >>> import flask
-     - >>> flask.__version__
+- >>> import flask
+- >>> flask.__version__
 
 
 ### __init__.py , load app & run app
 - The __init__.py file makes Python treat directories containing it as modules.
 - Furthermore, this is the first file to be loaded in a module, so you can use it to execute code that you want to run each time a    module is loaded, or specify the submodules to be exported.
 
-
+### run app 
+- To run app either use ```python main_file.py ``` or ```flask run```
 ### Define route 
 - to define route in flask , we can use ```app.add_url_rule('/', 'index', index)``` where index is the name of the method or 
   use ```route``` decorator as ```@app.route('/')``` 
@@ -96,5 +97,7 @@ def before_request():
  ```sudo pip3 install psycopg2``` 
 - once installed, we can import it and get various available methods.
 
+### To share [Extract required dependencies in requirements.txt file]
+- use command in project directory ```pip freeze > requirements.txt```
 
 
