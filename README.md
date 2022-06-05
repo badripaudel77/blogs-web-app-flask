@@ -15,8 +15,8 @@
 - To install Flask inside virtual environment enter the command: ```sudo pip3 install flask``` or ```pip3 install flask``` on project directory not venv dir or `pip install flask==version_number` if specific version.
 - to unistall if needed, use ```python3 -m pip uninstall flask ```  
 - to verify flask installation we can use following command, it will give the installed version of the flask [2.1.2] as of writing this file
-- >>> import flask
-- >>> flask.__version__
+- ```import flask```
+- ```print(flask.__version__)```
 
 
 ### __init__.py , load app & run app
