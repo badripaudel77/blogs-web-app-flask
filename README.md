@@ -106,7 +106,7 @@ def before_request():
 - ```heroku login```
 - Install heroku CLI
 - install dependency called gunicorn as ```pip3 install gunicorn``` The Gunicorn "Green Unicorn" is a Python Web Server Gateway    Interface HTTP server.
-- create Procfile and ``` web gunicorn app:main``` [ this creates server and tell heroku what to do with our file]
+- create Procfile and ```web: gunicorn app:main``` [ this creates server and tell heroku what to do with our file]
 - git init & commit 
 - create heroku app from CLI as ``` heroku create blogsinflask ``` , blogsinflask is app name
 - ```git remote -v``` gives remote repository 
