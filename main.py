@@ -9,4 +9,5 @@ app = create_app()
     # run the app
 if __name__ == "__main__":
        print('App is up & running in port {}'.format(5000), ' Flask version : {}'.format(flask.__version__))
-       app.run(debug=True) # app.run() disables debugging  
+       # host='0.0.0.0' allows it accessible everywhere. Otherwise, running on docker, it always looks for localhost even inside of the docker which may fail.    
+       app.run(host='0.0.0.0', debug=True) # app.run() disables debugging  
